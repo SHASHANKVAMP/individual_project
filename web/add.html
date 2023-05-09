@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Device</title>
+    <link rel="stylesheet" href="add.css">
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">Smart Building</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/add" class="active">Add Device</a></li>
+          <li><a href="/lightning">Lighting</a></li>
+          <li><a href="/ac">AC</a></li>
+          <li><a href="/security">Security</a></li>
+          <li><a href="/charts">Charts</a></li>
+        </ul>
+      </nav>
+    </header>
+      <div class="container">
+        <form>
+          <label for="device-name">Device Name:</label>
+          <input type="text" id="device-name" name="device-name" required>
+  
+          <label for="device-type">Device Type:</label>
+          <select id="device-type" name="device-type">
+            <option value="lighting">Lighting</option>
+            <option value="ac">AC</option>
+            <option value="security">Security</option>
+          </select>
+  
+          <label for="device-location">Device Location:</label>
+          <input type="text" id="device-location" name="device-location" required>
+  
+          <div id="lighting-fields" >
+            <label for="light-state">Light State:</label>
+            <select id="light-state" name="light-state">
+              <option value="on">On</option>
+              <option value="off">Off</option>
+            </select>
+  
+            <div style="display: flex;" >
+              <label for="light-color">Light Color:</label>
+            <input type="color" id="light-color" name="light-color" style="margin: 2%;">
+            </div>
+  
+            <button type="submit" id="addlight">Add Light</button>
+          </div>
+  
+          <div id="ac-fields" style="display: none;">
+            <label for="ac-state">Ac State:</label>
+            <select id="ac-state" name="ac-state">
+              <option value="on">On</option>
+              <option value="off">Off</option>
+            </select>
+            <lable id="ac-temp">Ac temperature:</lable>
+            <input type="number" name="ac-temp" id="temperature">
+            <button type="submit" id="addac">Add Ac</button>
+          </div>
+  
+          <div id="security-fields" style="display: none;">
+            <label for="camera">Camera State:</label>
+            <select id="camera" name="camera">
+              <option value="on">On</option>
+              <option value="off">Off</option>
+            </select>
+            <lable for="access">Access control: </lable>
+            <select name="access" id="access">
+              <option value="Grant">Grant</option>
+              <option value="Deny">Deny</option>
+            </select>
+            <button type="submit" id="addsecurity">Add Security</button>
+          </div>
+  
+          
+        </form>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2023 Smart Building. All rights reserved.</p>
+    </footer>
+    <script>
+      const deviceTypeSelect = document.getElementById("device-type");
+      const lightingFields = document.getElementById("lighting-fields");
+      const acFields = document.getElementById("ac-fields");
+      const securityFields = document.getElementById("security-fields");
+
+      deviceTypeSelect.addEventListener("change", () => {
+        if (deviceTypeSelect.value === "lighting") {
+          lightingFields.style.display = "block";
+        } else {
+          lightingFields.style.display = "none";
+        }
+      });
+      deviceTypeSelect.addEventListener("change", () => {
+        if (deviceTypeSelect.value === "ac") {
+          acFields.style.display = "block";
+        } else {
+          acFields.style.display = "none";
+        }
+      });
+      deviceTypeSelect.addEventListener("change", () => {
+        if (deviceTypeSelect.value === "security") {
+          securityFields.style.display = "block";
+        } else {
+          securityFields.style.display = "none";
+        }
+      }); 
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

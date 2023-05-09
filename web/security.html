@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lights</title>
+    <link rel="stylesheet" href="ac.css" />
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">Smart Building</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/add">Add Device</a></li>
+          <li><a href="/lightning" >Lighting</a></li>
+          <li><a href="/ac" >AC</a></li>
+          <li><a href="/security" class="active">Security</a></li>
+          <li><a href="/charts">Charts</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="seccards"></div>
+
+    <div class="forms">
+      <div class="control">
+        <form>
+          <h2>Update Security</h2>
+          <label for="name">Device Name: </label>
+          <input type="text" id="name" />
+          <label for="camera">camera: </label>
+          <select name="camera" id="camera">
+            <option value="On">On</option>
+            <option value="Off">Off</option>
+          </select>
+          <label for="access">access: </label>
+          <select name="access" id="access">
+            <option value="Grant">Grant</option>
+            <option value="Deny">Deny</option>
+          </select>
+          <button id="updatesec">Submit</button>
+        </form>
+      </div>
+      <div class="control">
+        <form>
+          <h2>Delete Security</h2>
+          <label for="name">Device Name: </label>
+          <input type="text" id="dname" />
+          <button id="deletesec">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2023 Smart Building. All rights reserved.</p>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.js"
+      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+      crossorigin="anonymous"
+    ></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <style>
+        header {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+body{
+  margin: 0;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+  }
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.active {
+  background-color: #444;
+}
+header h1 {
+  font-size: 2rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav li:not(:last-child) {
+  margin-right: 1rem;
+}
+
+nav a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  background-color: #444;
+  text-decoration: none;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+footer p {
+  font-size: 1.5rem;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="/">Smart Building</a></h1>
+        <nav>
+          <ul>
+            <li><a href="/add" >Add Device</a></li>
+            <li><a href="/lightning">Lighting</a></li>
+            <li><a href="/ac">AC</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/charts" class="active">Charts</a></li>
+          </ul>
+        </nav>
+      </header>
+    <div id="container"></div>
+    <footer>
+        <p>&copy; 2023 Smart Building. All rights reserved.</p>
+      </footer>
+    <script>
+        // Make API call to retrieve data
+        fetch('http://localhost:5000/sensors')
+            .then(response => response.json())
+            .then(data => {
+                // Format the data for Highcharts
+                const chartData = data.map(item => [item.time, item.value]);
+                console.log(chartData);
+                // Create the Highcharts chart
+                Highcharts.chart('container', {
+                    title: {
+                        text: 'Sensor Data'
+                    },
+                    xAxis: {
+                        type: 'datetime'
+                    },
+                    series: [{
+                        name: 'Value',
+                        data: chartData
+                    }]
+                });
+            });
+
+    </script>
+</body>
+</html>
