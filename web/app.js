@@ -1,4 +1,4 @@
-const API = "http://localhost:4000";
+const API = "https://api-vhsk.onrender.com";
 
 $.get(`${API}/light`).then((response) => {
   response.forEach((lights) => {
